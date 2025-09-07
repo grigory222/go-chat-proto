@@ -28,6 +28,7 @@ message Message {
 service AuthService {
   rpc Register (RegisterRequest) returns (RegisterResponse);
   rpc Login (LoginRequest) returns (LoginResponse);
+  rpc RefreshToken (RefreshTokenRequest) returns (RefreshTokenResponse);
 }
 
 message RegisterRequest {
@@ -49,6 +50,14 @@ message LoginResponse {
   string access_token = 1;
   string refresh_token = 2;
   User user = 3;
+}
+
+message RefreshTokenRequest {
+  string refresh_token = 1;
+}
+
+message RefreshTokenResponse {
+  string access_token = 1;
 }
 
 // ==== CHAT SERVICE ====
